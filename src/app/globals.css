@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: #ffffff;
+  --background: #050508;
+  --electric: #8b61c2;
+  --electric-light: #a87de0;
+  --electric-dark: #6a44a0;
+  --electric-rgb: 139, 97, 194;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)];
+  }
+
+  .glass-purple {
+    @apply bg-purple-900/10 backdrop-blur-xl border border-purple-500/20 shadow-[0_4px_30px_rgba(139,97,194,0.15)];
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 40px rgba(139, 97, 194, 0.7), 0 0 80px rgba(139, 97, 194, 0.3);
+  }
+
+  .text-glow-sm {
+    text-shadow: 0 0 15px rgba(139, 97, 194, 0.6);
+  }
+
+  .purple-glow {
+    box-shadow: 0 0 30px rgba(139, 97, 194, 0.4), 0 0 60px rgba(139, 97, 194, 0.15);
+  }
+
+  .purple-border-glow {
+    box-shadow: 0 0 0 1px rgba(139, 97, 194, 0.5), 0 0 20px rgba(139, 97, 194, 0.2);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050508;
+}
+::-webkit-scrollbar-thumb {
+  background: #8b61c2;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a87de0;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(1deg); }
+  66% { transform: translateY(-6px) rotate(-1deg); }
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139,97,194,0.3); }
+  50% { box-shadow: 0 0 50px rgba(139,97,194,0.7), 0 0 80px rgba(139,97,194,0.3); }
+}
+
+/* Orbit ring */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-orbit {
+  animation: orbit 4s linear infinite;
+}
+
+/* Gradient border */
+.gradient-border {
+  background: linear-gradient(#050508, #050508) padding-box,
+              linear-gradient(135deg, #8b61c2, #6a44a0, #8b61c2) border-box;
+  border: 1px solid transparent;
+}
+
+/* Ambient purple background blobs */
+.purple-blob {
+  background: radial-gradient(circle, rgba(139,97,194,0.15) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
